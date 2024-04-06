@@ -1,5 +1,7 @@
 import { useEffect,useState } from "react";
-import WorkoutEntry from "../components/WorkoutEntry";
+import WorkoutCard from "../components/WorkoutCard";
+import WorkoutForm from "../components/WorkoutForm";
+import '../styles/Home.css'
 const Home = () => {
     const [workouts,setWorkouts] = useState(null);
     useEffect(()=>{
@@ -14,12 +16,13 @@ const Home = () => {
         fetchWorkouts();
     },[])
     return ( 
-        <div>
+        <div className="homepage">
             <div className="workouts">
                 {workouts && workouts.map((workout)=>(
-                    <WorkoutEntry key={workout._id} workout={workout}/>
+                    <WorkoutCard key={workout._id} workout={workout}/>
                 ))}
             </div>
+            <WorkoutForm/>
         </div>
      );
 }
