@@ -21,3 +21,20 @@
     color: black !important;
     font-size: 0.8rem  !important;  
 }
+.workoutCardButton{
+    margin: 0px auto !important;
+    color:red !important;
+}
+.cardContentMain{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    /* background-color: aqua; */
+}
+.typographyDiv{
+    width:80%;
+    /* background-color: yellow; */
+}
+.buttonDiv{
+    margin-top: 10px;
+}
