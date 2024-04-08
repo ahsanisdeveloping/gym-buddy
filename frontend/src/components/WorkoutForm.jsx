@@ -37,7 +37,6 @@ const WorkoutForm = () => {
             load:"",
             reps:""
         })
-        alert("New Workout Added");
         dispatch({type:'CREATE_WORKOUTS',payload:json})
     }
   };

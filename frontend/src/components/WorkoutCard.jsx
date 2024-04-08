@@ -8,7 +8,7 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import "../styles/WorkoutCard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const WorkoutCard = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
   const handleDelete = async () => {
@@ -38,7 +38,7 @@ const WorkoutCard = ({ workout }) => {
               Reps: {workout.reps}
             </Typography>
             <Typography className="workoutCardCreatedAt">
-              {workout.createdAt}
+              {formatDistanceToNow(new Date(workout.createdAt),{addSuffix:true})}
             </Typography>
           </div>
           <div className="buttonDiv">
@@ -46,7 +46,7 @@ const WorkoutCard = ({ workout }) => {
               className="workoutCardButton"
               onClick={handleDelete}
             >
-              <FontAwesomeIcon icon={faTrash} style={{ color: 'red' }} />
+              <FontAwesomeIcon icon={faTrash} />
             </Button>
           </div>
         </CardContent>

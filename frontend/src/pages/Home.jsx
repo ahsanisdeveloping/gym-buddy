@@ -15,7 +15,7 @@ const Home = () => {
             }
         }
         fetchWorkouts();
-    },[])
+    },[dispatch])
     return ( 
         <div className="homepage">
             <div className="workouts">
