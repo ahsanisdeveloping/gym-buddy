@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { TextField, Button } from "@mui/material";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import '../styles/WorkoutForm.css'
 const WorkoutForm = () => {
+  const {dispatch} = useWorkoutsContext();
   const [formData, setFormData] = useState({
     title: "",
     load: "",
@@ -30,13 +32,13 @@ const WorkoutForm = () => {
     if(response.ok)
     {
         setError(null);
-        alert("New Workout Added");
         setFormData({
             title:"",
             load:"",
             reps:""
         })
-        window.location.reload();
+        alert("New Workout Added");
+        dispatch({type:'CREATE_WORKOUTS',payload:json})
     }
   };
   return (
