@@ -30,17 +30,20 @@ const WorkoutForm = () => {
     if(response.ok)
     {
         setError(null);
-        console.log("New Workout Added");
+        alert("New Workout Added");
         setFormData({
             title:"",
             load:"",
             reps:""
         })
+        window.location.reload();
     }
   };
   return (
     <form onSubmit={handleSubmit} className="workoutForm">
+      <span className="formHeading">Add a new workout</span>
       <TextField
+        className="textFields"
         name="title"
         label="Exercise Title"
         variant="outlined"
@@ -48,23 +51,25 @@ const WorkoutForm = () => {
         onChange={handleChange}
       />
       <TextField
+      className="textFields"
         name="load"
-        label="Exercise Load"
+        label="Load (KG)"
         variant="outlined"
         value={formData.load}
         onChange={handleChange}
       />
       <TextField
+      className="textFields"
         name="reps"
-        label="Exercise Reps"
+        label="Reps"
         variant="outlined"
         value={formData.reps}
         onChange={handleChange}
       />
-      <Button variant="contained" type="submit">
+      <Button className="formButton" variant="contained" type="submit">
         Insert
       </Button>
-      {error && <p>{error}</p>}
+      {error && <p className="formError">{error}</p>}
     </form>
   );
 };

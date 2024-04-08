@@ -1,18 +1,23 @@
 .workoutCard{
     display: flex;
     flex-direction: column;
-    padding:10px 50px;
-    width:50vw;
+    padding:5px 30px !important;
+    width:40vw;
 }
 .workoutCardTitle{
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #0f4b90 !important;
 }
 .workoutCardLoad{
-    font-size: 1.5rem  !important;
+    color: black !important;
+    font-size: 1.2rem  !important;
 }
 .workoutCardReps{
-    font-size: 1.5rem  !important;  
+    color: black !important;
+    font-size: 1.2rem  !important;  
 }
 .workoutCardCreatedAt{
-    font-size: 1rem  !important;  
+    color: black !important;
+    font-size: 0.8rem  !important;  
 }

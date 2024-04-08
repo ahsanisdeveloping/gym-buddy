@@ -1,4 +1,22 @@
 .workoutForm{
     display: flex;
     flex-direction: column;
+    width: 25vw;
+}
+.formHeading{
+    margin-top: 10px;
+    font-weight: 700;
+}
+.textFields{
+    margin-top: 10px !important;
+}
+.formButton{
+    margin-top: 10px !important;
+}
+.formError{
+    border-radius: 8px;
+    border: 1px solid red;
+    padding:10px;
+    color:red;
+
 }
