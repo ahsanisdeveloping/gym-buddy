@@ -1,0 +1,13 @@
+.updateModal{
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: none !important;
+    padding:50px !important;
+}
+.updateModalTextField{
+    margin-top:10px !important;
+}
+.updateModalButton{
+    margin-top:10px !important;
+}

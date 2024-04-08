@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
@@ -6,10 +7,12 @@ import { Button } from "@mui/material";
 import Typography from "@mui/joy/Typography";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import "../styles/WorkoutCard.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import UpdateModal from "../modals/UpdateModal";
 const WorkoutCard = ({ workout }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { dispatch } = useWorkoutsContext();
   const handleDelete = async () => {
     const response = await fetch("/api/workouts/" + workout._id, {
@@ -23,10 +26,26 @@ const WorkoutCard = ({ workout }) => {
       });
     }
   };
+  // const handleUpdate = async () => {
+  //   const response = await fetch("api/workouts/ " + workout._id, {
+  //     mehtod: "UPDATE",
+  //     body: JSON.stringify(workout),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  // };
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
   return (
     <Box className="workoutCard">
       <Card variant="outlined">
-        <CardContent className='cardContentMain'>
+        <CardContent className="cardContentMain">
           <div className="typographyDiv">
             <Typography className="workoutCardTitle">
               {workout.title}
@@ -38,16 +57,25 @@ const WorkoutCard = ({ workout }) => {
               Reps: {workout.reps}
             </Typography>
             <Typography className="workoutCardCreatedAt">
-              {formatDistanceToNow(new Date(workout.createdAt),{addSuffix:true})}
+              {formatDistanceToNow(new Date(workout.createdAt), {
+                addSuffix: true,
+              })}
             </Typography>
           </div>
           <div className="buttonDiv">
-            <Button
-              className="workoutCardButton"
-              onClick={handleDelete}
-            >
+            <Button className="workoutCardButton" onClick={handleDelete}>
               <FontAwesomeIcon icon={faTrash} />
             </Button>
+            <UpdateModal
+              open={isModalOpen}
+              handleClose={handleModalClose}
+              initialValues={{
+                title: workout.title,
+                load: workout.load,
+                reps: workout.reps,
+                _id: workout._id,
+              }}
+            />
           </div>
         </CardContent>
       </Card>
